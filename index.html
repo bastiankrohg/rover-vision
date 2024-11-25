@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rover Stream Viewer</title>
+</head>
+<body>
+    <h1>Rover Stream</h1>
+
+    <!-- Display Button to Start/Stop Stream -->
+    <button id="toggleButton" onclick="toggleStream()">Start Stream</button>
+    <br><br>
+
+    <!-- Video Stream Area -->
+    <div id="videoContainer" style="display: none;">
+        <h2>Inference Output from Coral</h2>
+        <img id="videoStream" src="" width="640" height="480" alt="Inference Stream">
+    </div>
+
+    <script>
+        let isStreaming = false;
+
+        function toggleStream() {
+            const video = document.getElementById("videoStream");
+            const container = document.getElementById("videoContainer");
+            const button = document.getElementById("toggleButton");
+
+            if (isStreaming) {
+                // Stop the stream
+                video.src = "";
+                container.style.display = "none";
+                button.innerText = "Start Stream";
+            } else {
+                // Start the stream
+                video.src = "http://coral-tpu-2:5000/video_feed";
+                container.style.display = "block";
+                button.innerText = "Stop Stream";
+            }
+
+            isStreaming = !isStreaming;
+        }
+    </script>
+</body>
+</html>
