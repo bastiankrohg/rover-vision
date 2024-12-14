@@ -1,3 +1,6 @@
 [submodule "google-coral/examples-camera"]
 	path = google-coral/examples-camera
 	url = https://github.com/google-coral/examples-camera.git
+[submodule "detection"]
+	path = detection
+	url = git@github.com:bastiankrohg/detection.git
